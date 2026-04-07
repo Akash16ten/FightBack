@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 38 21% 93%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 22 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 52 100% 50%;
+    --secondary-foreground: 0 0% 34%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 53%;
+    --accent: 22 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 22 100% 50%;
+
+    /* Extended Colors */
+    --chart-1: 22 100% 80%;
+    --chart-2: 22 100% 65%;
+    --chart-3: 22 100% 50%;
+    --chart-4: 21 100% 35%;
+    --chart-5: 22 100% 20%;
+
+    /* Sidebar Colors */
+    --sidebar: 0 0% 10%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 22 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 22 100% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 22 100% 50%;
+
+    /* Typography */
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+
+    /* Shadows */
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+  }
+}
+
+/* ── FightBack custom animations ─────────────────────────────────────────── */
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes urgentPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(1.08); }
+}
+
+@keyframes navUnderlineGrow {
+  from { width: 0; opacity: 0; }
+  to   { width: 24px; opacity: 1; }
+}
+
+@keyframes progressGlow {
+  0%, 100% { box-shadow: 0 0 6px 1px rgba(255,92,0,0.5); }
+  50%       { box-shadow: 0 0 14px 3px rgba(255,92,0,0.85); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 16px rgba(255,92,0,0.35); }
+  50%       { transform: scale(1.05); box-shadow: 0 0 28px rgba(255,92,0,0.6);  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .animate-in {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Tool page entrance */
+  .tool-enter {
+    animation: fadeSlideIn 0.3s ease both;
+  }
+
+  /* URGENT badge pulse */
+  .urgent-pulse {
+    animation: urgentPulse 1.6s ease-in-out infinite;
+  }
+
+  /* Progress bar glow */
+  .progress-glow {
+    animation: progressGlow 1.8s ease-in-out infinite;
+  }
+
+  /* Chatbot breathe */
+  .breathe {
+    animation: breathe 2s ease-in-out infinite;
+  }
+
+  /* Nav underline entrance */
+  .nav-underline {
+    animation: navUnderlineGrow 0.25s ease both;
+  }
+
+  /* Card hover glow */
+  .card-hover {
+    transition: box-shadow 0.2s ease, border-left-color 0.2s ease;
+  }
+  .card-hover:hover {
+    box-shadow: 0 0 12px rgba(255,92,0,0.15);
+  }
+}
+
+/* Hex grid background texture — applied to the app root */
+.hex-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0-6l22-12.7V21.7L28 9 6 21.7v25.6L28 60z' fill='%23FF5C00' fill-opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 56px 100px;
+}
+
+/* Unless told otherwise, keep it for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
