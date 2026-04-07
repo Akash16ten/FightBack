@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,16 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FightBack</title>
   </head>
-  <body class="fs-unmask-airo-app-builder">
-    <div id="app" class="fs-unmask-airo-app-builder"></div>
-    <script type="module">
-      if (import.meta.env.MODE === 'development') {
-        await import('/dev-tools/src/error-client.ts')
-      }
-      import('/src/main.tsx').catch(err => {
-        window.dispatchEvent(new CustomEvent('vite:initial-error', { detail: err }));
-      })
-    </script>
-    <script src="/analytics.js"></script>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

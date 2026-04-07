@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
-import AiroErrorBoundary from '../dev-tools/src/AiroErrorBoundary';
 import CookieBannerErrorBoundary from '@/components/CookieBannerErrorBoundary';
 import RootLayout from './layouts/RootLayout';
 import Spinner from './components/Spinner';
@@ -21,13 +20,6 @@ const SpinnerFallback = () => (
   </div>
 );
 
-/**
- * LanguageProvider wraps RootLayout *inside* the router element so that
- * every component rendered by React Router — including Outlet children —
- * is a descendant of the single shared LanguageContext. This guarantees
- * that calling useLanguage() anywhere in the tree reads from the same
- * state and re-renders immediately when the language is toggled.
- */
 const AppShell = () => (
   <LanguageProvider>
     <RootLayout>
@@ -39,13 +31,7 @@ const AppShell = () => (
 const router = createBrowserRouter([
   {
     path: '/',
-    element: import.meta.env.MODE === 'development' ? (
-      <AiroErrorBoundary>
-        <Suspense fallback={<SpinnerFallback />}>
-          <AppShell />
-        </Suspense>
-      </AiroErrorBoundary>
-    ) : (
+    element: (
       <Suspense fallback={<SpinnerFallback />}>
         <AppShell />
       </Suspense>
