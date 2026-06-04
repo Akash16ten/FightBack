@@ -1,4 +1,4 @@
-# FightBack ⚡
+# FightBack 
 
 > AI-powered legal aid platform for India's 10M+ gig workers — generate complaint letters, calculate wage gaps, and know your rights.
 
